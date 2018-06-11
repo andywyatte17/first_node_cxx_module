@@ -1,6 +1,9 @@
 // addon.cc
 #include <node.h>
 
+// In libmylib.a
+int silly_add(int a, int b);
+
 namespace demo {
 
 using v8::Exception;
@@ -34,7 +37,10 @@ void Add(const FunctionCallbackInfo<Value>& args) {
   }
 
   // Perform the operation
-  double value = args[0]->NumberValue() + args[1]->NumberValue();
+  double value =
+    (double)silly_add(
+      (int)args[0]->NumberValue(),
+      (int)args[1]->NumberValue());
   Local<Number> num = Number::New(isolate, value);
 
   // Set the return value (using the passed in

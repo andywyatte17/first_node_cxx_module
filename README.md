@@ -9,6 +9,12 @@ It's based on the tutorial at:
 
 https://github.com/nodejs/node-gyp#installation
 
+## Building (libmylib.a)
+
+    cd /path/to/first_node_cxx_module/mylib
+    gcc -c -o silly_add.o silly_add.cpp
+    ar rcs libmylib.a silly_add.o
+
 ## Building
 
     cd /path/to/first_node_cxx_module
